@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>Material Design for Bootstrap</title>
+    <!-- MDB icon -->
+    <link rel="icon" href="img/mdb-favicon.ico" type="image/x-icon" />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <!-- Google Fonts Roboto -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"
+    />
+    <!-- MDB -->
+    <link rel="stylesheet" href="css/mdb.min.css" />
+    <script src="https://unpkg.com/jquery"></script>
+    <script src="https://unpkg.com/vue"></script>
+  </head>
+  <body>
+    <div class="container p-5">
+      <h1 align='center'>Contact Us</h1>
+      <form class="form" @submit.prevent="processForm">
+        <!-- Name input -->
+        <div class="form-outline mb-3">
+          <input type="text" id="form4Example1" class="form-control" v-model="name"/>
+          <label class="form-label" for="form4Example1">Name</label>
+        </div>
+      
+        <!-- Email input -->
+        <div class="form-outline mb-3">
+          <input type="email" id="form4Example2" class="form-control" v-model="email"/>
+          <label class="form-label" for="form4Example2">Email address</label>
+        </div>
+
+        <!-- Phone input -->
+        <div class="form-outline mb-3">
+          <input type="phone" id="form4Example2" class="form-control" v-model="phone"/>
+          <label class="form-label" for="form4Example2">Phone</label>
+        </div>
+
+        <!-- Subject selection -->
+        <select class="browser-default form-select form-control form-outline mb-4" v-model="subject">
+          <option selected >Subject</option>
+          <option value="1" >Service Questions</option>
+          <option value="2" >Compliments</option>
+          <option value="3" >Complaints</option>
+          <option value="4" >Others</option>
+        </select>
+
+        
+        <!-- Message input -->
+        <div class="form-outline mb-4 ">
+          <textarea class="form-control text-input" id="form4Example3" rows="4" v-model="description"></textarea>
+          <label class="form-label" for="form4Example3">Message</label>
+        </div>
+      
+        <!-- Submit button -->
+        <button type="submit" class="btn btn-primary btn-block mb-4 mt-5">Send</button>
+      </form>
+    </div>
+    <!-- MDB -->
+    <script type="text/javascript" src="js/mdb.min.js"></script>
+    <!-- Custom scripts -->
+    <script>
+      import handleForm from api.ts
+      const form = new Vue({
+        el:'#form',
+        data: {
+          name:'',
+          email:'',
+          phone:'',
+          subject:'',
+          description:''
+        },
+        methods: {
+          processForm: 
+          handleForm(
+            this.name, 
+            this.email, 
+            this.phone, 
+            this.subject, 
+            this.description)
+        }
+      })
+    </script>
+  </body>
+</html>
