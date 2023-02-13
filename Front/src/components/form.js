@@ -26,7 +26,7 @@ const ContactForm = () => {
 
   const handleSubmit = async () => {
     setSubmitted(true)
-    await axios.post('http://localhost:8080/form',
+    await axios.post('https://coden-message.onrender.com/form',
     {name: name,
     email: email,
     phone: phone,

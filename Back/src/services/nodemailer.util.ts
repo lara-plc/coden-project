@@ -20,16 +20,16 @@ const sendEmail = async({name,email,phone,subject,description}: IContactRequest)
         port: 587,
         secure: false,
         auth: {
-            user: 'poncianolaralc@outlook.com',
-            pass: 'Bluehill2018!'
+            user: process.env.SMTP_USER,
+            pass: process.env.SMTP_PASS
         }
     })
 
     //Criação do método sendMail
     //O método fará o envio do email de acordo com os parâmetros passados
     await transporter.sendMail({
-        from: 'poncianolaralc@outlook.com',
-        to: 'poncianolaralc@gmail.com',
+        from: process.env.SMTP_USER,
+        to: process.env.CRM_EMAIL,
         subject: subject,
         html: message
     }).then(() => {
